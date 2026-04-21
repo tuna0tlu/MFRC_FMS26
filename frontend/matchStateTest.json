@@ -1,0 +1,24 @@
+{
+  "command": "updateMatchState",
+  "content": {
+    "MatchState": "Countdown",
+    "MatchID": 67,
+    "IsPractice": false,
+    "IsRematch": false,
+    "MatchType": "Qualification",
+    "RedTeams": [
+      { "YellowCardCount": 0, "ID": 11, "Name": "TestTeam11", "RP": 0 },
+      { "YellowCardCount": 0, "ID": 2, "Name": "TestTeam2", "RP": 0 },
+      { "YellowCardCount": 0, "ID": 3, "Name": "TestTeam3", "RP": 0 }
+    ],
+    "BlueTeams": [
+      { "YellowCardCount": 0, "ID": 4, "Name": "TestTeam4", "RP": 0 },
+      { "YellowCardCount": 0, "ID": 5, "Name": "TestTeam5", "RP": 0 },
+      { "YellowCardCount": 0, "ID": 6, "Name": "TestTeam6", "RP": 0 }
+    ],
+    "RedPoints": 0,
+    "BluePoints": 0,
+    "CD": 2,
+    "RT": 101
+  }
+}

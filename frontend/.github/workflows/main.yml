@@ -1,0 +1,43 @@
+name: CI
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+
+      # 1) Checkout first, so hashFiles can see bun.lockb
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      # 2) Cache Bun’s global and install cache
+      - name: Cache Bun
+        uses: actions/cache@v4
+        with:
+          path: |
+            ~/.bun
+            ~/.bun/install/cache
+          key: bun-${{ runner.os }}-${{ hashFiles('**/bun.lockb') }}
+
+      # 3) Install Bun
+      - name: Setup Bun
+        uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: 1.2.10
+
+      # 4) Install dependencies
+      - name: Install dependencies
+        run: bun install --frozen-lockfile
+
+      # 5) Generate / build step
+      - name: Generate output
+        run: bun run generate
